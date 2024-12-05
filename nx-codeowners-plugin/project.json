@@ -1,0 +1,64 @@
+{
+  "name": "nx-codeowners-plugin",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "nx-codeowners-plugin/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/nx-codeowners-plugin",
+        "main": "nx-codeowners-plugin/src/index.ts",
+        "tsConfig": "nx-codeowners-plugin/tsconfig.lib.json",
+        "assets": [
+          "nx-codeowners-plugin/*.md",
+          {
+            "input": "./nx-codeowners-plugin/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./nx-codeowners-plugin/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./nx-codeowners-plugin",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./nx-codeowners-plugin",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "nx-codeowners-plugin/jest.config.ts"
+      }
+    }
+  }
+}
