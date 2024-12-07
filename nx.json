@@ -14,6 +14,9 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
+  "sync": {
+    "globalGenerators": ["nx-codeowners-plugin:sync-codeowners-file"]
+  },
   "nxCloudId": "6751ee7644b7c002cc8bfd14",
   "targetDefaults": {
     "@nx/js:tsc": {

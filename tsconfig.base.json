@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@myorg/mylib": ["libs/mylib/src/index.ts"],
       "nx-codeowners-plugin": ["nx-codeowners-plugin/src/index.ts"]
     }
   },

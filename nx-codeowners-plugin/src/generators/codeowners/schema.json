@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "create",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Project"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Project Owners"
+    }
+  },
+  "required": ["project", "owners"]
+}

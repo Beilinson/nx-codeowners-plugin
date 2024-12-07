@@ -1,0 +1,8 @@
+* @beilinson
+
+# NX-CODEOWNERS-PLUGIN
+# The content below was auto-generated with nx-codeowners-plugin
+# do not edit it by hand
+
+# lib: nx-codeowners-plugin
+nx-codeowners-plugin/* @beilinson

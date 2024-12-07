@@ -1,0 +1,7 @@
+<%= BASE_CODEOWNERS %>
+
+<%= PLUGIN_HEADER %>
+# The content below was auto-generated with nx-codeowners-plugin
+# do not edit it by hand
+
+<%= PROJECTS_CODEOWNERS %>

@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "codeowners": {
+      "factory": "./src/generators/codeowners/generator",
+      "schema": "./src/generators/codeowners/schema.json",
+      "description": "Create CODEOWNERS file for a Project"
+    },
+    "sync-codeowners-file": {
+      "factory": "./src/generators/sync-codeowners-file/generator",
+      "schema": "./src/generators/sync-codeowners-file/schema.json",
+      "description": "Sync root CODEOWNERS file with Project CODEOWNERS"
+    }
+  }
+}
