@@ -1,8 +1,6 @@
-import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nx/devkit';
-
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { syncCodeownersFileGenerator } from './generator';
-import { SyncCodeownersFileGeneratorSchema } from './schema';
 
 describe('sync-codeowners-file generator', () => {
   let tree: Tree;

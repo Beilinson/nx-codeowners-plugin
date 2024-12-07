@@ -1,9 +1,8 @@
-import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Tree, joinPathFragments, readProjectConfiguration } from '@nx/devkit';
-
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { readFileIfExisting } from 'nx/src/utils/fileutils';
 import { codeownersGenerator } from './generator';
 import { CodeownersGeneratorSchema } from './schema';
-import { readFileIfExisting } from 'nx/src/utils/fileutils';
 
 describe('CODEOWNERS Generator', () => {
   let tree: Tree;
