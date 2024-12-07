@@ -5,7 +5,8 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@nx/devkit": "^20.0.0"
+    "@nx/devkit": "^20.0.0",
+    "github-codeowners": "^0.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

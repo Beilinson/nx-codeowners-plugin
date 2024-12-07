@@ -14,7 +14,6 @@ module.exports = [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
-  ...eslintPluginPrettierRecommended,
   {
     ignores: ['**/dist'],
   },
@@ -41,4 +40,5 @@ module.exports = [
     // Override or add rules here
     rules: {},
   },
+  eslintPluginPrettierRecommended,
 ];

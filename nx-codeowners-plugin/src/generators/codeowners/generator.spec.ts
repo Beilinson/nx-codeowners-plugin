@@ -1,6 +1,6 @@
 import { Tree, joinPathFragments, readProjectConfiguration } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { readFileIfExisting } from 'nx/src/utils/fileutils';
+import { readFileSync } from 'fs';
 import { codeownersGenerator } from './generator';
 import { CodeownersGeneratorSchema } from './schema';
 
@@ -15,7 +15,7 @@ describe('CODEOWNERS Generator', () => {
   it('should run successfully', async () => {
     await codeownersGenerator(tree, options);
     const config = readProjectConfiguration(tree, 'test');
-    const codeowners = readFileIfExisting(joinPathFragments(config.root, 'CODEOWNERS'));
+    const codeowners = readFileSync(joinPathFragments(config.root, 'CODEOWNERS'), 'utf-8');
     expect(codeowners).toBeDefined();
   });
 });

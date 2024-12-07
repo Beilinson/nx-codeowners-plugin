@@ -16,7 +16,8 @@
     "owners": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^(@[a-zA-Z0-9]+(?:/[a-zA-Z0-9]+)?)|([a-zA-Z0-9/.]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+)$"
       },
       "description": "",
       "$default": {

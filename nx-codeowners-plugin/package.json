@@ -3,8 +3,14 @@
   "version": "0.0.2",
   "dependencies": {
     "@nx/devkit": ">=16.0.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "github-codeowners": "^0.2.1"
   },
+  "keywords": [
+    "nx",
+    "codeowners",
+    "monorepo"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/beilinson/nx-codeowners-plugin",
