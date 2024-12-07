@@ -18,8 +18,8 @@ It is also recommended to setup as a [Global Sync Generator](https://nx.dev/conc
 
 #### NX >= 19.8
 
-```json
-# ./nx.json
+```jsonc
+// ./nx.json
 {
     ...,
     "sync": {
@@ -39,14 +39,15 @@ nx generate nx-codeowners-plugin:sync-codeowners-file
 ```
 
 ### Example
+
 #### Before:
 
-```
+```CODEOWNERS
 # ./apps/myapp/CODEOWNERS
 * @myorg/app-team
 ```
 
-```
+```CODEOWNERS
 # ./CODEOWNERS
 * @myorg/myteam
 docs/* @myorg/docs-team
@@ -54,7 +55,7 @@ docs/* @myorg/docs-team
 
 #### After
 
-```
+```CODEOWNERS
 # ./CODEOWNERS
 * @myorg/myteam
 docs/* @myorg/docs-team
