@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
-import { join, dirname } from 'path';
 import { mkdirSync, rmSync } from 'fs';
+import { dirname, join } from 'path';
 
 describe('nx-codeowners-plugin', () => {
   let projectDirectory: string;
@@ -10,7 +10,7 @@ describe('nx-codeowners-plugin', () => {
 
     // The plugin has been built and published to a local registry in the jest globalSetup
     // Install the plugin built with the latest source code into the test repo
-    execSync(`npm install nx-codeowners-plugin@e2e`, {
+    execSync(`npm install nx-codeowners-plugin`, {
       cwd: projectDirectory,
       stdio: 'inherit',
       env: process.env,
@@ -51,14 +51,11 @@ function createTestProject() {
     recursive: true,
   });
 
-  execSync(
-    `npx --yes create-nx-workspace@latest ${projectName} --preset apps --nxCloud=skip --no-interactive`,
-    {
-      cwd: dirname(projectDirectory),
-      stdio: 'inherit',
-      env: process.env,
-    }
-  );
+  execSync(`npx --yes create-nx-workspace@latest ${projectName} --preset apps --nxCloud=skip --no-interactive`, {
+    cwd: dirname(projectDirectory),
+    stdio: 'inherit',
+    env: process.env,
+  });
   console.log(`Created test project in "${projectDirectory}"`);
 
   return projectDirectory;
