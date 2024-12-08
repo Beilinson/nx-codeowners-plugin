@@ -1,6 +1,6 @@
 {
   "name": "nx-codeowners-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "@nx/devkit": ">=16.0.0",
     "tslib": "^2.3.0",

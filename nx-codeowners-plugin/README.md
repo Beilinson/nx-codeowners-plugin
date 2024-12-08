@@ -1,6 +1,6 @@
 # nx-codeowners-plugin
 
-An NX plugin alternative to `@nx/powerpack-codeowners`, aiming to provide a simpler API leveraging the basic `CODEOWNERS` syntax at the project level. By combining actual `CODEOWNERS` files at the project level, you can use your `git` implementation's syntax (github, gitlab, bitbucket), without requiring adding anything to your `project.json` files.
+An NX plugin alternative to `@nx/powerpack-owners`, aiming to provide a simpler API leveraging the basic `CODEOWNERS` syntax at the project level. By combining actual `CODEOWNERS` files at the project level, you can use your `git` implementation's syntax (github, gitlab, bitbucket), without requiring adding anything to your `project.json` files. Additionally, provides nice ownership statistics and `CODEOWNERS` validation
 
 ## Install
 
@@ -12,7 +12,7 @@ nx add nx-codeowners-plugin
 
 ## Sync Workspace CODEOWNERS
 
-Compile all the Project-level `CODEOWNERS` file to a single root `CODEOWNERS` file to be used by your given `Git` implementation (github, gitlab, bitbucket). The generator respects your existing base CODEOWNERS file, appending the project CODEOWNERS content to the end.
+Compile all the Project-level `CODEOWNERS` file to a single root `CODEOWNERS` file. The generator respects your existing base `CODEOWNERS` file, appending the project `CODEOWNERS` content to the end.
 
 It is also recommended to setup as a [Global Sync Generator](https://nx.dev/concepts/sync-generators#global-sync-generators) and run `nx sync` as a git hook.
 
@@ -43,14 +43,14 @@ nx generate nx-codeowners-plugin:sync-codeowners-file
 #### Before:
 
 ```CODEOWNERS
-# ./apps/myapp/CODEOWNERS
-* @myorg/app-team
-```
-
-```CODEOWNERS
 # ./CODEOWNERS
 * @myorg/myteam
 docs/* @myorg/docs-team
+```
+
+```CODEOWNERS
+# ./apps/myapp/CODEOWNERS
+* @myorg/app-team
 ```
 
 #### After
