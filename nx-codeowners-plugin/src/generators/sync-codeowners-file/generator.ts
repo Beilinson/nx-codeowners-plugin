@@ -31,6 +31,7 @@ function getProjectOwnersString(project: ProjectGraphProjectNode): string | unde
   const codeowners = joinStrings(
     projectCodeowners.split('\n').map((line) => {
       if (line.length && !line.startsWith('#')) {
+        if (line.match(/^\*.[a-z]/)) line = `**/${line}`;
         line = `${project.data.root}/${line}`;
       }
       return line;
@@ -69,18 +70,30 @@ export async function syncCodeownersFileGenerator(tree: Tree) {
   if (output.unmatched.size > 0) {
     logger.warn(joinStrings(['Found rules which did not match any files:', ...output.unmatched.values()]));
   }
-  const files = await getFileOwnership({ ...options, onlyGit: false });
+  const files = await getFileOwnership({ ...options, onlyGit: true });
   const stats = calcFileStats(files);
 
   logger.info('\nCoverage:');
-  logger.info(`Total: ${stats.total.files} files (${stats.total.lines} lines)`);
-  logger.info(`Protected: ${stats.loved.files} files (${stats.loved.lines} lines)`);
-  logger.info(`Unprotected: ${stats.unloved.files} files (${stats.unloved.lines} lines)\n`);
-  logger.info('Owners:');
-  const owners = stats.owners
-    .map((owner) => `${owner.owner}: ${owner.counters.files} files (${owner.counters.lines} lines)`)
-    .join('\n');
-  logger.info(`${owners}\n`);
+  console.table({ Total: { ...stats.total }, Protected: { ...stats.loved }, Unprotected: { ...stats.unloved } });
+  if (stats.unloved.files > 0) {
+    logger.verbose('Unprotected files:');
+    files
+      .filter((file) => file.owners.length === 0)
+      .forEach((file) => {
+        logger.verbose(file.path, file.lines);
+      });
+  }
+  logger.info('\nOwners:');
+  const owners = Object.fromEntries(
+    stats.owners.map((owner) => [
+      owner.owner,
+      {
+        ...owner.counters,
+        percentage: `${((owner.counters.lines / stats.loved.lines) * 100).toFixed()}%`,
+      },
+    ]),
+  );
+  console.table(owners);
 }
 
 export default syncCodeownersFileGenerator;
